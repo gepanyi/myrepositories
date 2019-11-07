@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>返回顶部</title>
+    <style>
+        .rTop {
+            width: 30px;
+            /* height: 100px; */
+            background: pink;
+            text-align: center;
+            line-height: 30px;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body style="height: 2000px;">
+    <div class="box">
+        <div class="rTop">返回顶部</div>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+        <p>这是内容</p>
+    </div>
+    <script>
+
+        // 获取元素
+        let rTop = document.querySelector(".rTop")
+        // 窗口滚动事件
+        window.onscroll = function () {
+            let stop = document.documentElement.scrollTop || document.body.scrollTop
+            console.log(stop);
+            if (stop > 500) {
+                rTop.style.display = "block"
+            } else {
+                rTop.style.display = "none"
+            }
+
+
+        }
+
+
+        // 返回顶部
+        rTop.onclick = function () {
+            // console.log(1);
+            // 获取滚动条滚动的总距离
+            let stop = document.documentElement.scrollTop || document.body.scrollTop;
+            // 保存时间
+            let time = 1000;
+
+            // 总速度
+            let speed = stop / time;
+
+            // 定义计时器
+            let timerId = setInterval(() => {
+
+                // 获取滚动条在原来基础上滚动的距离
+                let s = document.documentElement.scrollTop || document.body.scrollTop;
+                document.documentElement.scrollTop = s - speed * 200
+                document.body.scrollTop = s - speed * 200
+                if(s<=0){
+                    clearInterval(timerId)
+
+                }
+
+            }, 100)
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
