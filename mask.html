@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蒙层</title>
+    <style>
+        #form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ccc;
+            width: 260px;
+            height: 200px;
+            text-align: center;
+            z-index: 100;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">添加蒙层</button>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <p>这是内容部分</p>
+    <form id="form">
+        <p>用户名：<input /></p>
+        <p>密码：<input /></p>
+        <p><button id="btnsubmit">登陆</button></p>
+    </form>
+    <script>
+        window.onload = function () {
+            // 获取元素
+            let btn = document.getElementById("btn");
+
+            let form = document.getElementById("form")
+
+            let btnsubmit=document.getElementById("btnsubmit")
+
+            // 创建一个div
+            let div = document.createElement("div")
+
+            btn.onclick = function () {
+                // console.log(1);
+                // 获取窗口的高度和宽度
+                let wid = document.documentElement.clientWidth;
+                let hei = document.documentElement.clientHeight;
+
+                div.style = `
+                position:fixed;
+                top:0;
+                left:0;
+                width:${wid}px;
+                height:${hei}px;
+                background-color: rgba(0,0,0,.5); 
+                
+                `
+                document.body.appendChild(div)
+                form.style.display = "block"
+
+            }
+            // 窗口改变事件
+            window.onresize = function () {
+                // 获取窗口的高度和宽度
+                let wid = document.documentElement.clientWidth;
+                let hei = document.documentElement.clientHeight;
+                div.style.width = `${wid}px`
+                div.style.height = `${hei}px`
+
+
+            }
+            
+            btnsubmit.onclick=function(){
+                this.style.display="none";
+                div.style.display="none"
+            }
+
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
