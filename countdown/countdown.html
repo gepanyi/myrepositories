@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东秒杀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100%;
+            background: #F50438;
+            line-height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .left-box {
+
+            display: flex;
+        }
+
+        .img {
+            margin-left: 10px;
+            display: inline-block;
+            margin-top: 5px;
+            width: 20px;
+            height: 20px;
+            /* padding-left: 10px; */
+        }
+
+        .seckill {
+            margin-top: 1px !important;
+            text-indent: 0.5em;
+            color: #FDCDD7
+        }
+
+        .right-box {
+            padding-top: 2px;
+            padding-right: 10px;
+            display: flex;
+            color: #FDCDD7;
+        }
+
+        .right-box span {
+            display: inline-block;
+            width: 30px;
+            height: 26px;
+            background: #473D3C;
+            color: #FDCDD7;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="left-box">
+            <img class="img" src="img/icont-seckill.png" />
+            <span class="seckill">京东秒杀</span>
+        </div>
+        <div class="right-box">
+            <p>结束时间:</p>
+            <p>
+                <span class="day"></span>天
+                <span class="hours"></span>时
+                <span class="minutes"></span>分
+                <span class="secound"></span>秒
+            </p>
+        </div>
+    </div>
+
+    <script>
+
+        function timer() {
+            //  获取当前时间
+            var cTime = new Date();
+
+            // 获取将来的时间
+            var fTime = new Date("2019-11-22 00:00:00")
+
+            // 获取差
+            var gap = fTime - cTime
+            // 天
+            var day = Math.floor(gap / 1000 / 60 / 60 / 24)
+            day = buling(day)
+            // 时
+            var hours = Math.floor(gap / 1000 / 60 / 60 % 24)
+            hours = buling(hours)
+            // 分
+            var minutes = Math.floor(gap / 1000 / 60 % 60)
+            minutes = buling(minutes)
+            // 秒
+            var secound = Math.floor(gap / 1000 % 60)
+            secound = buling(secound)
+
+          
+            document.querySelector(".day").innerHTML=day
+            document.querySelector(".hours").innerHTML=hours
+            document.querySelector(".minutes").innerHTML=minutes
+            document.querySelector(".secound").innerHTML=secound
+
+        }
+        
+        timer()
+        setInterval(timer,1000);
+
+
+        // 补零
+        function buling(obj) {
+            if (obj < 10) {
+                return "0" + obj
+
+            } else {
+                return obj;
+            }
+
+
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
